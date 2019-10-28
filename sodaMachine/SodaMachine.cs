@@ -164,5 +164,21 @@ namespace sodaMachine
                 }
             }
         }
+        public void CheckForChange()
+        {
+            Quarter quarter = new Quarter();
+            Dime dime = new Dime();
+            Nickle nickle = new Nickle();
+            Penny penny = new Penny();
+            double machineChange;
+            machineChange = quarters.Count() * quarter.value;
+            machineChange = machineChange + (dimes.Count() * dime.value);
+            machineChange = machineChange + (nickles.Count() * nickle.value);
+            machineChange = = machineChange + (pennies.Count() * penny.value);
+            if(machineChange < refundAmount)
+            {
+                return;
+            }
+        }
     }
 }

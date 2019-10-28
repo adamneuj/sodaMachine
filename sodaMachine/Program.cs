@@ -17,7 +17,7 @@ namespace sodaMachine
             payment.Add(new Quarter());
             payment.Add(new Quarter());
             sodaMachine.TakePayment(payment);
-            Soda userSoda = sodaMachine.BuyGrapeSoda();
+            Soda userSoda = sodaMachine.BuyLemonSoda();
             payment = sodaMachine.RefundPayment();
 
         }
