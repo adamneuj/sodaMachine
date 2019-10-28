@@ -9,6 +9,8 @@ namespace sodaMachine
     class SodaMachine
     {
         double paymentValue;
+        double refundAmount;
+        List<Coin> refund;
         List<Penny> pennies;
         List<Nickle> nickles;
         List<Dime> dimes;
@@ -19,6 +21,7 @@ namespace sodaMachine
 
         public SodaMachine()
         {
+            refund = new List<Coin>();
             pennies = new List<Penny>();
             nickles = new List<Nickle>();
             dimes = new List<Dime>();
@@ -61,11 +64,99 @@ namespace sodaMachine
             payment.Clear();
         }
 
-        public void BuyGrapeSoda(GrapeSoda soda)
+        public GrapeSoda BuyGrapeSoda()
         {
-            if(paymentValue >= soda.value)
+            if(grapeInventory.Count() != 0)
             {
-
+                CheckPaymentToSodaPrice(grapeInventory[0]);
+                grapeInventory.RemoveAt(0);
+                return new GrapeSoda();
+            }
+            else
+            {
+                refundAmount = paymentValue;
+                Refund();
+                throw new ArgumentNullException("No grape soda left in machine.");
+            }
+        }
+        public OrangeSoda BuyOrangeSoda()
+        {
+            if (orangeInventory.Count() != 0)
+            {
+                CheckPaymentToSodaPrice(orangeInventory[0]);
+                orangeInventory.RemoveAt(0);
+                return new OrangeSoda();
+            }
+            else
+            {
+                refundAmount = paymentValue;
+                Refund();
+                throw new ArgumentNullException("No orange soda left in machine.");
+            }
+        }
+        public LemonSoda BuyLemonSoda()
+        {
+            if (lemonInventory.Count() != 0)
+            {
+                CheckPaymentToSodaPrice(lemonInventory[0]);
+                lemonInventory.RemoveAt(0);
+                return new LemonSoda();
+            }
+            else
+            {
+                refundAmount = paymentValue;
+                Refund();
+                throw new ArgumentNullException("No Lemon soda left in machine.");
+            }
+        }
+        public void CheckPaymentToSodaPrice(Soda soda)
+        {
+            if (paymentValue >= soda.value)
+            {
+                refundAmount = paymentValue - soda.value;
+                Refund();
+            }
+            else
+            {
+                refundAmount = paymentValue;
+                Refund();
+                Console.WriteLine("Not enough money to buy soda.");
+                Console.ReadLine();
+            }
+        }
+        public void Refund()
+        {
+            Quarter quarter = new Quarter();
+            Dime dime = new Dime();
+            Nickle nickle = new Nickle();
+            Penny penny = new Penny();
+            while(refundAmount > 0)
+            {
+                refundAmount = Math.Round(refundAmount, 2);
+                if (refundAmount - quarter.value >= quarter.value)
+                {
+                    refundAmount -= quarter.value;
+                    refund.Add(new Quarter());
+                    quarters.RemoveAt(0);
+                }
+                else if(refundAmount - dime.value >= dime.value)
+                {
+                    refundAmount -= dime.value;
+                    refund.Add(new Dime());
+                    dimes.RemoveAt(0);
+                }
+                else if(refundAmount - nickle.value >= nickle.value)
+                {
+                    refundAmount -= nickle.value;
+                    refund.Add(new Nickle());
+                    nickles.RemoveAt(0);
+                }
+                else
+                {
+                    refundAmount -= penny.value;
+                    refund.Add(new Penny());
+                    pennies.RemoveAt(0);
+                }
             }
         }
     }
