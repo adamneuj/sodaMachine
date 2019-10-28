@@ -42,11 +42,11 @@ namespace sodaMachine
                 pennies.Add(new Penny());
                 if (initialInventory <= nickelsAndQuarters)
                 {
-                    nickles.Add(new Nickle());
-                    quarters.Add(new Quarter());
+                    //nickles.Add(new Nickle());
+                    //quarters.Add(new Quarter());
                     if (initialInventory <= dimesAndSodas)
                     {
-                        dimes.Add(new Dime());
+                        //dimes.Add(new Dime());
                         grapeInventory.Add(new GrapeSoda());
                         orangeInventory.Add(new OrangeSoda());
                         lemonInventory.Add(new LemonSoda());
@@ -116,6 +116,7 @@ namespace sodaMachine
         }
         public void CheckPaymentToSodaPrice(Soda soda)
         {
+
             if (paymentValue >= soda.value)
             {
                 refundAmount = paymentValue - soda.value;
@@ -131,6 +132,13 @@ namespace sodaMachine
         }
         public void Refund()
         {
+            bool change = CheckForChange();
+            if(change == false)
+            {
+                Console.WriteLine("Not enough change in machine.");
+                Console.ReadLine();
+                return;
+            }
             Quarter quarter = new Quarter();
             Dime dime = new Dime();
             Nickle nickle = new Nickle();
@@ -164,7 +172,7 @@ namespace sodaMachine
                 }
             }
         }
-        public void CheckForChange()
+        public bool CheckForChange()
         {
             Quarter quarter = new Quarter();
             Dime dime = new Dime();
@@ -174,10 +182,14 @@ namespace sodaMachine
             machineChange = quarters.Count() * quarter.value;
             machineChange = machineChange + (dimes.Count() * dime.value);
             machineChange = machineChange + (nickles.Count() * nickle.value);
-            machineChange = = machineChange + (pennies.Count() * penny.value);
+            machineChange = machineChange + (pennies.Count() * penny.value);
             if(machineChange < refundAmount)
             {
-                return;
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }
