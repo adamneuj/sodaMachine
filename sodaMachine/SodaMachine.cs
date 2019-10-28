@@ -8,6 +8,7 @@ namespace sodaMachine
 {
     class SodaMachine
     {
+        double paymentValue;
         List<Penny> pennies;
         List<Nickle> nickles;
         List<Dime> dimes;
@@ -28,7 +29,7 @@ namespace sodaMachine
             CreateInitialInventory();
         }
 
-        public void CreateInitialInventory()
+        private void CreateInitialInventory()
         {
             int initialInventory = 50;
             int nickelsAndQuarters = 20;
@@ -49,6 +50,22 @@ namespace sodaMachine
                     }
                 }
                 initialInventory--;
+            }
+        }
+        public void TakePayment(List<Coin> payment)
+        {
+            for(int i = 0; i < payment.Count(); i++)
+            {
+                paymentValue += payment[i].value;
+            }
+            payment.Clear();
+        }
+
+        public void BuyGrapeSoda(GrapeSoda soda)
+        {
+            if(paymentValue >= soda.value)
+            {
+
             }
         }
     }

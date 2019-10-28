@@ -8,6 +8,7 @@ namespace sodaMachine
 {
     class Coin
     {
+        public string name;
         public double value;
     }
 }

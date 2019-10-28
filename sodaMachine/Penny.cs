@@ -10,6 +10,7 @@ namespace sodaMachine
     {
         public Penny()
         {
+            name = "penny";
             value = .01;
         }
     }

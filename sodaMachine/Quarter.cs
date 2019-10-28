@@ -10,6 +10,7 @@ namespace sodaMachine
     {
         public Quarter()
         {
+            name = "quarter";
             value = .25;
         }
     }
