@@ -42,11 +42,11 @@ namespace sodaMachine
                 pennies.Add(new Penny());
                 if (initialInventory <= nickelsAndQuarters)
                 {
-                    //nickles.Add(new Nickle());
-                    //quarters.Add(new Quarter());
+                    nickles.Add(new Nickle());
+                    quarters.Add(new Quarter());
                     if (initialInventory <= dimesAndSodas)
                     {
-                        //dimes.Add(new Dime());
+                        dimes.Add(new Dime());
                         grapeInventory.Add(new GrapeSoda());
                         orangeInventory.Add(new OrangeSoda());
                         lemonInventory.Add(new LemonSoda());
@@ -114,7 +114,7 @@ namespace sodaMachine
                 return null;
             }
         }
-        public void CheckPaymentToSodaPrice(Soda soda)
+        private void CheckPaymentToSodaPrice(Soda soda)
         {
 
             if (paymentValue >= soda.value)
@@ -130,7 +130,7 @@ namespace sodaMachine
                 Console.ReadLine();
             }
         }
-        public void Refund()
+        private void Refund()
         {
             bool change = CheckForChange();
             if(change == false)
@@ -172,7 +172,7 @@ namespace sodaMachine
                 }
             }
         }
-        public bool CheckForChange()
+        private bool CheckForChange()
         {
             Quarter quarter = new Quarter();
             Dime dime = new Dime();
