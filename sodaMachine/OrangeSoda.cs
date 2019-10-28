@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace sodaMachine
 {
-    class Program
+    class OrangeSoda : Soda
     {
-        static void Main(string[] args)
+        public OrangeSoda()
         {
-            SodaMachine sodaMachine = new SodaMachine();
+            value = .35;
         }
     }
 }

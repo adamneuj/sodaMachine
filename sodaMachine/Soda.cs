@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace sodaMachine
 {
-    class Program
+    class Soda
     {
-        static void Main(string[] args)
-        {
-            SodaMachine sodaMachine = new SodaMachine();
-        }
+        public double value;
     }
 }
