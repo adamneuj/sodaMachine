@@ -63,6 +63,10 @@ namespace sodaMachine
             }
             payment.Clear();
         }
+        public List<Coin> RefundPayment()
+        {
+            return refund;
+        }
 
         public GrapeSoda BuyGrapeSoda()
         {

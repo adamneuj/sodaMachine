@@ -12,8 +12,13 @@ namespace sodaMachine
         {
             SodaMachine sodaMachine = new SodaMachine();
             List<Coin> payment = new List<Coin>();
+            payment.Add(new Quarter());
+            payment.Add(new Quarter());
+            payment.Add(new Quarter());
+            payment.Add(new Quarter());
             sodaMachine.TakePayment(payment);
             Soda userSoda = sodaMachine.BuyGrapeSoda();
+            payment = sodaMachine.RefundPayment();
 
         }
     }

@@ -55,7 +55,6 @@
     <Compile Include="Quarter.cs" />
     <Compile Include="Soda.cs" />
     <Compile Include="SodaMachine.cs" />
-    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
