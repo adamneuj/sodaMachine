@@ -40,11 +40,11 @@ namespace sodaMachine
             while(initialInventory != 0)
             {
                 pennies.Add(new Penny());
-                if(initialInventory <= nickelsAndQuarters)
+                if (initialInventory <= nickelsAndQuarters)
                 {
                     nickles.Add(new Nickle());
                     quarters.Add(new Quarter());
-                    if(initialInventory <= dimesAndSodas)
+                    if (initialInventory <= dimesAndSodas)
                     {
                         dimes.Add(new Dime());
                         grapeInventory.Add(new GrapeSoda());
@@ -70,7 +70,7 @@ namespace sodaMachine
 
         public GrapeSoda BuyGrapeSoda()
         {
-            if(grapeInventory.Count() != 0)
+            if (grapeInventory.Count() != 0)
             {
                 CheckPaymentToSodaPrice(grapeInventory[0]);
                 grapeInventory.RemoveAt(0);
@@ -80,11 +80,12 @@ namespace sodaMachine
             {
                 refundAmount = paymentValue;
                 Refund();
-                throw new ArgumentNullException("No grape soda left in machine.");
+                return null;
             }
         }
         public OrangeSoda BuyOrangeSoda()
         {
+
             if (orangeInventory.Count() != 0)
             {
                 CheckPaymentToSodaPrice(orangeInventory[0]);
@@ -95,7 +96,7 @@ namespace sodaMachine
             {
                 refundAmount = paymentValue;
                 Refund();
-                throw new ArgumentNullException("No orange soda left in machine.");
+                return null;
             }
         }
         public LemonSoda BuyLemonSoda()
@@ -110,7 +111,7 @@ namespace sodaMachine
             {
                 refundAmount = paymentValue;
                 Refund();
-                throw new ArgumentNullException("No Lemon soda left in machine.");
+                return null;
             }
         }
         public void CheckPaymentToSodaPrice(Soda soda)
